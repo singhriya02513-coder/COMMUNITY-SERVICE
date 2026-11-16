@@ -1,0 +1,356 @@
+{
+  "symptom_groups": {
+    "General": [
+      "fever",
+      "high_fever",
+      "chills",
+      "sweating",
+      "night_sweats",
+      "fatigue",
+      "weakness",
+      "weight_loss",
+      "weight_gain",
+      "loss_of_appetite",
+      "increased_hunger",
+      "excessive_thirst"
+    ],
+    "Head & Nerves": [
+      "headache",
+      "pain_behind_eyes",
+      "dizziness",
+      "fainting",
+      "confusion",
+      "insomnia",
+      "anxiety",
+      "low_mood",
+      "sensitivity_to_light",
+      "neck_stiffness",
+      "blurred_vision",
+      "tingling_hands",
+      "numbness"
+    ],
+    "Eyes, Ears & Throat": [
+      "sore_throat",
+      "runny_nose",
+      "sneezing",
+      "nasal_congestion",
+      "loss_of_smell",
+      "loss_of_taste",
+      "watery_eyes",
+      "eye_redness",
+      "ear_pain",
+      "facial_pain",
+      "hoarseness",
+      "difficulty_swallowing",
+      "nosebleed",
+      "bad_breath",
+      "bleeding_gums"
+    ],
+    "Respiratory": [
+      "cough",
+      "dry_cough",
+      "cough_with_phlegm",
+      "cough_with_blood",
+      "shortness_of_breath",
+      "wheezing",
+      "chest_pain",
+      "snoring"
+    ],
+    "Heart & Circulation": [
+      "rapid_heartbeat",
+      "slow_heartbeat",
+      "cold_hands",
+      "cold_feet"
+    ],
+    "Digestive": [
+      "nausea",
+      "vomiting",
+      "diarrhea",
+      "abdominal_pain",
+      "constipation",
+      "bloating",
+      "heartburn",
+      "blood_in_stool",
+      "dark_urine",
+      "yellow_skin",
+      "yellow_eyes"
+    ],
+    "Urinary": [
+      "burning_urination",
+      "frequent_urination",
+      "cloudy_urine",
+      "blood_in_urine",
+      "pelvic_pain",
+      "flank_pain",
+      "painful_urination"
+    ],
+    "Skin": [
+      "rash",
+      "red_spots",
+      "skin_lesions",
+      "blisters",
+      "pale_skin",
+      "slow_healing",
+      "dry_skin",
+      "itchy_skin"
+    ],
+    "Bones & Muscles": [
+      "muscle_pain",
+      "joint_pain",
+      "back_pain",
+      "knee_pain",
+      "stiffness",
+      "swelling",
+      "muscle_cramps"
+    ],
+    "Other": [
+      "swollen_lymph_nodes",
+      "daytime_sleepiness",
+      "frequent_infections",
+      "dehydration"
+    ]
+  },
+  "symptom_labels": {
+    "fever": "Fever",
+    "high_fever": "High fever",
+    "chills": "Chills",
+    "sweating": "Sweating",
+    "night_sweats": "Night sweats",
+    "fatigue": "Fatigue",
+    "weakness": "Weakness",
+    "weight_loss": "Weight loss",
+    "weight_gain": "Weight gain",
+    "loss_of_appetite": "Loss of appetite",
+    "increased_hunger": "Increased hunger",
+    "excessive_thirst": "Excessive thirst",
+    "headache": "Headache",
+    "pain_behind_eyes": "Pain behind eyes",
+    "dizziness": "Dizziness",
+    "fainting": "Fainting",
+    "confusion": "Confusion",
+    "insomnia": "Insomnia",
+    "anxiety": "Anxiety",
+    "low_mood": "Low mood",
+    "sensitivity_to_light": "Sensitivity to light",
+    "neck_stiffness": "Neck stiffness",
+    "blurred_vision": "Blurred vision",
+    "tingling_hands": "Tingling hands",
+    "numbness": "Numbness",
+    "sore_throat": "Sore throat",
+    "runny_nose": "Runny nose",
+    "sneezing": "Sneezing",
+    "nasal_congestion": "Nasal congestion",
+    "loss_of_smell": "Loss of smell",
+    "loss_of_taste": "Loss of taste",
+    "watery_eyes": "Watery eyes",
+    "eye_redness": "Eye redness",
+    "ear_pain": "Ear pain",
+    "facial_pain": "Facial pain",
+    "hoarseness": "Hoarseness",
+    "difficulty_swallowing": "Difficulty swallowing",
+    "nosebleed": "Nosebleed",
+    "bad_breath": "Bad breath",
+    "bleeding_gums": "Bleeding gums",
+    "cough": "Cough",
+    "dry_cough": "Dry cough",
+    "cough_with_phlegm": "Cough with phlegm",
+    "cough_with_blood": "Cough with blood",
+    "shortness_of_breath": "Shortness of breath",
+    "wheezing": "Wheezing",
+    "chest_pain": "Chest pain",
+    "snoring": "Snoring",
+    "rapid_heartbeat": "Rapid heartbeat",
+    "slow_heartbeat": "Slow heartbeat",
+    "cold_hands": "Cold hands",
+    "cold_feet": "Cold feet",
+    "nausea": "Nausea",
+    "vomiting": "Vomiting",
+    "diarrhea": "Diarrhea",
+    "abdominal_pain": "Abdominal pain",
+    "constipation": "Constipation",
+    "bloating": "Bloating",
+    "heartburn": "Heartburn",
+    "blood_in_stool": "Blood in stool",
+    "dark_urine": "Dark urine",
+    "yellow_skin": "Yellow skin",
+    "yellow_eyes": "Yellow eyes",
+    "burning_urination": "Burning urination",
+    "frequent_urination": "Frequent urination",
+    "cloudy_urine": "Cloudy urine",
+    "blood_in_urine": "Blood in urine",
+    "pelvic_pain": "Pelvic pain",
+    "flank_pain": "Flank pain",
+    "painful_urination": "Painful urination",
+    "rash": "Rash",
+    "red_spots": "Red spots",
+    "skin_lesions": "Skin lesions",
+    "blisters": "Blisters",
+    "pale_skin": "Pale skin",
+    "slow_healing": "Slow healing wounds",
+    "dry_skin": "Dry skin",
+    "itchy_skin": "Itchy skin",
+    "muscle_pain": "Muscle pain",
+    "joint_pain": "Joint pain",
+    "back_pain": "Back pain",
+    "knee_pain": "Knee pain",
+    "stiffness": "Stiffness",
+    "swelling": "Swelling",
+    "muscle_cramps": "Muscle cramps",
+    "swollen_lymph_nodes": "Swollen lymph nodes",
+    "daytime_sleepiness": "Daytime sleepiness",
+    "frequent_infections": "Frequent infections",
+    "dehydration": "Dehydration"
+  },
+  "diseases": {
+    "Influenza": {
+      "description": "A viral infection of the respiratory tract that causes sudden fever, body aches and exhaustion. It spreads easily through coughing and sneezing.",
+      "symptoms": ["fever", "chills", "fatigue", "muscle_pain", "headache", "dry_cough", "sore_throat", "runny_nose"],
+      "precautions": ["Rest and drink plenty of fluids", "Take fever medicine only as advised by a doctor", "Cover your mouth while coughing or sneezing", "Stay home to avoid spreading the virus"],
+      "specialist": "General Physician"
+    },
+    "Common Cold": {
+      "description": "A mild viral infection of the nose and throat. Symptoms usually build slowly and clear up within a week to ten days.",
+      "symptoms": ["sneezing", "runny_nose", "nasal_congestion", "sore_throat", "cough", "headache", "fatigue", "fever"],
+      "precautions": ["Drink warm fluids and stay hydrated", "Get enough rest", "Wash your hands frequently", "Avoid close contact with people who are unwell"],
+      "specialist": "General Physician"
+    },
+    "COVID-19": {
+      "description": "An infectious respiratory illness caused by the SARS-CoV-2 virus. It can range from mild cold-like symptoms to serious breathing difficulty.",
+      "symptoms": ["fever", "dry_cough", "fatigue", "loss_of_smell", "loss_of_taste", "sore_throat", "shortness_of_breath", "headache"],
+      "precautions": ["Isolate yourself and wear a mask around others", "Monitor your oxygen level if a device is available", "Seek urgent care for breathing difficulty", "Follow local testing and vaccination guidance"],
+      "specialist": "General Physician"
+    },
+    "Malaria": {
+      "description": "A mosquito-borne infection caused by Plasmodium parasites. It typically produces cycles of high fever, chills and sweating.",
+      "symptoms": ["high_fever", "chills", "sweating", "headache", "nausea", "vomiting", "muscle_pain", "fatigue"],
+      "precautions": ["Get a blood test for malaria as soon as possible", "Use mosquito nets and repellents", "Avoid stagnant water near your home", "Complete the full course of prescribed medicine"],
+      "specialist": "General Physician"
+    },
+    "Dengue": {
+      "description": "A viral infection spread by Aedes mosquitoes. High fever, severe headache and body pain are common, and platelet levels may drop.",
+      "symptoms": ["high_fever", "headache", "pain_behind_eyes", "joint_pain", "muscle_pain", "rash", "red_spots", "nausea", "fatigue"],
+      "precautions": ["Drink fluids to prevent dehydration", "Use paracetamol for fever, not aspirin or ibuprofen", "Get a platelet count checked if symptoms worsen", "Prevent mosquito breeding around your home"],
+      "specialist": "General Physician"
+    },
+    "Typhoid": {
+      "description": "A bacterial infection spread through contaminated food and water. It causes prolonged fever, stomach pain and weakness.",
+      "symptoms": ["high_fever", "abdominal_pain", "constipation", "diarrhea", "loss_of_appetite", "headache", "weakness", "bloating"],
+      "precautions": ["Drink only boiled or filtered water", "Eat freshly cooked food and wash fruit", "Get a blood culture or Widal test if fever persists", "Complete the prescribed antibiotic course"],
+      "specialist": "General Physician"
+    },
+    "Pneumonia": {
+      "description": "An infection that inflames the air sacs in one or both lungs. It can cause phlegm, chest pain and difficulty breathing.",
+      "symptoms": ["fever", "cough_with_phlegm", "shortness_of_breath", "chest_pain", "chills", "fatigue", "rapid_heartbeat"],
+      "precautions": ["Seek medical care promptly, especially with breathlessness", "Take prescribed antibiotics or antivirals as directed", "Rest and drink warm fluids", "Avoid smoking and second-hand smoke"],
+      "specialist": "Pulmonologist"
+    },
+    "Bronchial Asthma": {
+      "description": "A chronic condition in which the airways narrow and swell, causing wheezing, coughing and breathlessness, often triggered by allergens.",
+      "symptoms": ["shortness_of_breath", "wheezing", "chest_pain", "cough", "insomnia", "anxiety", "fatigue"],
+      "precautions": ["Keep your rescue inhaler with you", "Avoid dust, smoke and known triggers", "Follow your asthma action plan", "Get urgent help if breathing does not improve"],
+      "specialist": "Pulmonologist"
+    },
+    "Diabetes Mellitus": {
+      "description": "A metabolic condition in which blood sugar stays too high. Early signs include thirst, frequent urination and unexplained weight loss.",
+      "symptoms": ["excessive_thirst", "frequent_urination", "increased_hunger", "weight_loss", "fatigue", "blurred_vision", "slow_healing", "tingling_hands"],
+      "precautions": ["Get a fasting blood sugar or HbA1c test", "Limit sugary drinks and refined carbohydrates", "Exercise for at least 30 minutes most days", "Never ignore a foot wound or persistent thirst"],
+      "specialist": "Endocrinologist"
+    },
+    "Hypertension": {
+      "description": "Persistently high blood pressure that often has no obvious symptoms but raises the risk of heart, kidney and stroke problems.",
+      "symptoms": ["headache", "dizziness", "blurred_vision", "chest_pain", "shortness_of_breath", "nosebleed", "fatigue", "rapid_heartbeat"],
+      "precautions": ["Check your blood pressure regularly", "Reduce salt and processed food", "Stay physically active and manage stress", "Take prescribed medicine without skipping doses"],
+      "specialist": "Cardiologist"
+    },
+    "Migraine": {
+      "description": "A neurological condition that causes recurring throbbing headaches, often with nausea and sensitivity to light or sound.",
+      "symptoms": ["headache", "nausea", "sensitivity_to_light", "blurred_vision", "dizziness", "vomiting", "pain_behind_eyes"],
+      "precautions": ["Rest in a quiet, dark room during an attack", "Identify and avoid triggers such as skipped meals or poor sleep", "Keep a headache diary", "Do not overuse painkillers without medical advice"],
+      "specialist": "Neurologist"
+    },
+    "Gastroenteritis": {
+      "description": "Inflammation of the stomach and intestines, usually caused by a viral or bacterial infection. It leads to diarrhoea, vomiting and cramps.",
+      "symptoms": ["diarrhea", "vomiting", "abdominal_pain", "nausea", "fever", "fatigue", "muscle_cramps", "dehydration"],
+      "precautions": ["Use oral rehydration solution frequently", "Eat light, bland food as tolerated", "Wash hands after using the toilet", "Seek care if there is blood in stool or signs of dehydration"],
+      "specialist": "Gastroenterologist"
+    },
+    "Hepatitis B": {
+      "description": "A viral infection that attacks the liver. It can cause jaundice, dark urine, fatigue and abdominal discomfort.",
+      "symptoms": ["yellow_skin", "yellow_eyes", "dark_urine", "fatigue", "nausea", "abdominal_pain", "loss_of_appetite", "joint_pain"],
+      "precautions": ["Get a hepatitis B blood test and medical review", "Avoid alcohol completely", "Do not share razors, needles or toothbrushes", "Ensure family members are vaccinated"],
+      "specialist": "Gastroenterologist"
+    },
+    "Urinary Tract Infection": {
+      "description": "A bacterial infection of the urinary system. It commonly causes a burning sensation, frequent urination and cloudy urine.",
+      "symptoms": ["burning_urination", "frequent_urination", "cloudy_urine", "pelvic_pain", "fever", "back_pain", "nausea", "painful_urination"],
+      "precautions": ["Drink plenty of water", "Do not hold urine for long periods", "Take prescribed antibiotics for the full course", "Seek care promptly if you develop fever or back pain"],
+      "specialist": "Urologist"
+    },
+    "Anemia": {
+      "description": "A condition with fewer healthy red blood cells than normal, leading to tiredness, pale skin and breathlessness on exertion.",
+      "symptoms": ["fatigue", "weakness", "pale_skin", "shortness_of_breath", "dizziness", "cold_hands", "cold_feet", "rapid_heartbeat"],
+      "precautions": ["Get a complete blood count test", "Eat iron-rich foods such as leafy greens and legumes", "Take iron supplements only as prescribed", "Investigate heavy periods or blood loss with a doctor"],
+      "specialist": "Hematologist"
+    },
+    "Hypothyroidism": {
+      "description": "An underactive thyroid gland slows metabolism, causing tiredness, weight gain, dry skin and feeling cold.",
+      "symptoms": ["fatigue", "weight_gain", "dry_skin", "constipation", "cold_hands", "slow_heartbeat", "muscle_cramps", "low_mood"],
+      "precautions": ["Ask for a thyroid function test (TSH, T3, T4)", "Take thyroid medicine consistently as prescribed", "Do not start supplements without medical advice", "Get periodic thyroid checks during pregnancy"],
+      "specialist": "Endocrinologist"
+    },
+    "Osteoarthritis": {
+      "description": "Wear-and-tear of joint cartilage that causes pain, stiffness and swelling, most often in the knees, hips and lower back.",
+      "symptoms": ["joint_pain", "stiffness", "swelling", "knee_pain", "back_pain", "muscle_pain", "fatigue"],
+      "precautions": ["Maintain a healthy body weight", "Do low-impact exercise such as swimming or cycling", "Use heat or cold packs for relief", "Ask a doctor before taking long-term painkillers"],
+      "specialist": "Orthopedic Specialist"
+    },
+    "Allergic Rhinitis": {
+      "description": "An allergic reaction affecting the nose and eyes, causing sneezing, a runny nose, itchy eyes and congestion.",
+      "symptoms": ["sneezing", "runny_nose", "itchy_skin", "watery_eyes", "nasal_congestion", "eye_redness", "cough", "sore_throat"],
+      "precautions": ["Avoid pollen, dust and pet dander where possible", "Keep windows closed during high pollen periods", "Ask a doctor about antihistamines", "Wash bedding regularly in hot water"],
+      "specialist": "ENT Specialist"
+    },
+    "Sinusitis": {
+      "description": "Inflammation of the sinuses that causes facial pressure, a blocked nose and headache, often after a cold.",
+      "symptoms": ["facial_pain", "nasal_congestion", "headache", "runny_nose", "sore_throat", "bad_breath", "cough", "fever"],
+      "precautions": ["Use steam inhalation to ease congestion", "Stay hydrated", "Saline nasal rinses can help", "See a doctor if symptoms last more than ten days"],
+      "specialist": "ENT Specialist"
+    },
+    "Tonsillitis": {
+      "description": "Infection of the tonsils that causes a severe sore throat, painful swallowing and swollen neck glands.",
+      "symptoms": ["sore_throat", "difficulty_swallowing", "fever", "swollen_lymph_nodes", "bad_breath", "ear_pain", "headache", "fatigue"],
+      "precautions": ["Drink warm fluids and rest your voice", "Gargle with warm salt water", "Take antibiotics only if prescribed", "Seek care if swallowing or breathing becomes difficult"],
+      "specialist": "ENT Specialist"
+    },
+    "Chickenpox": {
+      "description": "A highly contagious viral infection that causes an itchy rash with fluid-filled blisters, along with fever and tiredness.",
+      "symptoms": ["rash", "blisters", "itchy_skin", "fever", "fatigue", "headache", "loss_of_appetite", "skin_lesions"],
+      "precautions": ["Avoid scratching to prevent skin infection", "Keep nails short and take cool baths", "Stay away from pregnant women and newborns", "Consult a doctor about antiviral treatment"],
+      "specialist": "Dermatologist"
+    },
+    "Tuberculosis": {
+      "description": "A bacterial infection that usually affects the lungs. A persistent cough, night sweats and weight loss are warning signs.",
+      "symptoms": ["cough_with_blood", "cough", "night_sweats", "weight_loss", "fever", "chest_pain", "fatigue", "loss_of_appetite"],
+      "precautions": ["Get a sputum test and chest X-ray done", "Cover your mouth and wear a mask indoors", "Take the full six-month course if diagnosed", "Ensure close contacts are screened"],
+      "specialist": "Pulmonologist"
+    },
+    "Kidney Stones": {
+      "description": "Hard mineral deposits in the urinary tract that can cause severe flank pain, blood in urine and nausea.",
+      "symptoms": ["back_pain", "flank_pain", "blood_in_urine", "nausea", "vomiting", "frequent_urination", "painful_urination", "abdominal_pain"],
+      "precautions": ["Drink plenty of water throughout the day", "Reduce excess salt and oxalate-rich foods", "Do not ignore severe or worsening flank pain", "Get urine and imaging tests if symptoms persist"],
+      "specialist": "Urologist"
+    },
+    "Peptic Ulcer": {
+      "description": "A painful sore in the lining of the stomach or small intestine. It often causes burning stomach pain and bloating.",
+      "symptoms": ["heartburn", "abdominal_pain", "nausea", "bloating", "loss_of_appetite", "blood_in_stool", "vomiting", "weight_loss"],
+      "precautions": ["Avoid alcohol, smoking and excess caffeine", "Do not take painkillers such as ibuprofen without advice", "Eat smaller, regular meals", "Get tested for H. pylori infection"],
+      "specialist": "Gastroenterologist"
+    },
+    "Meningitis": {
+      "description": "An inflammation of the membranes surrounding the brain and spinal cord. It is a medical emergency that can worsen rapidly.",
+      "symptoms": ["high_fever", "headache", "neck_stiffness", "sensitivity_to_light", "confusion", "nausea", "vomiting", "fainting"],
+      "precautions": ["Treat this as an emergency and seek hospital care immediately", "Do not wait for all symptoms to appear", "Avoid close contact with others until assessed", "Ask about vaccination for close contacts"],
+      "specialist": "Neurologist"
+    }
+  }
+}

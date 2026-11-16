@@ -1,0 +1,139 @@
+{
+  "algorithm": "Random Forest",
+  "holdout_accuracy": 0.9889,
+  "holdout_weighted_f1": 0.9889,
+  "cv_accuracy_mean": 0.9902,
+  "cv_accuracy_std": 0.003,
+  "cv_folds": [
+    0.9911,
+    0.9867,
+    0.9956,
+    0.9889,
+    0.9889
+  ],
+  "comparison": {
+    "Random Forest": {
+      "accuracy": 0.9889,
+      "weighted_f1": 0.9889
+    },
+    "Extra Trees": {
+      "accuracy": 0.9889,
+      "weighted_f1": 0.9889
+    },
+    "Logistic Regression": {
+      "accuracy": 0.9889,
+      "weighted_f1": 0.9889
+    },
+    "K-Nearest Neighbors": {
+      "accuracy": 0.9911,
+      "weighted_f1": 0.9909
+    }
+  },
+  "confusions": [
+    {
+      "actual": "Hypertension",
+      "predicted": "Pneumonia",
+      "count": 1
+    },
+    {
+      "actual": "Influenza",
+      "predicted": "Malaria",
+      "count": 1
+    },
+    {
+      "actual": "Meningitis",
+      "predicted": "Migraine",
+      "count": 1
+    },
+    {
+      "actual": "Tuberculosis",
+      "predicted": "Chickenpox",
+      "count": 1
+    },
+    {
+      "actual": "Typhoid",
+      "predicted": "Malaria",
+      "count": 1
+    }
+  ],
+  "top_features": [
+    {
+      "symptom": "chills",
+      "label": "Chills",
+      "importance": 0.0217
+    },
+    {
+      "symptom": "dry_cough",
+      "label": "Dry cough",
+      "importance": 0.0205
+    },
+    {
+      "symptom": "pain_behind_eyes",
+      "label": "Pain behind eyes",
+      "importance": 0.0199
+    },
+    {
+      "symptom": "blurred_vision",
+      "label": "Blurred vision",
+      "importance": 0.0188
+    },
+    {
+      "symptom": "rash",
+      "label": "Rash",
+      "importance": 0.0179
+    },
+    {
+      "symptom": "headache",
+      "label": "Headache",
+      "importance": 0.0179
+    },
+    {
+      "symptom": "fever",
+      "label": "Fever",
+      "importance": 0.0178
+    },
+    {
+      "symptom": "itchy_skin",
+      "label": "Itchy skin",
+      "importance": 0.0176
+    },
+    {
+      "symptom": "loss_of_taste",
+      "label": "Loss of taste",
+      "importance": 0.0174
+    },
+    {
+      "symptom": "constipation",
+      "label": "Constipation",
+      "importance": 0.0173
+    },
+    {
+      "symptom": "bloating",
+      "label": "Bloating",
+      "importance": 0.0169
+    },
+    {
+      "symptom": "bad_breath",
+      "label": "Bad breath",
+      "importance": 0.0169
+    },
+    {
+      "symptom": "shortness_of_breath",
+      "label": "Shortness of breath",
+      "importance": 0.0167
+    },
+    {
+      "symptom": "rapid_heartbeat",
+      "label": "Rapid heartbeat",
+      "importance": 0.0166
+    },
+    {
+      "symptom": "nasal_congestion",
+      "label": "Nasal congestion",
+      "importance": 0.0165
+    }
+  ],
+  "dataset_rows": 2250,
+  "samples_per_disease": 90,
+  "trained_at": "2026-11-16T14:48:49+00:00"
+}

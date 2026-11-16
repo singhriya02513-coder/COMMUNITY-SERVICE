@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediPredict is an educational AI symptom checker that predicts possible conditions from your symptoms using machine learning.">
+  <meta name="theme-color" content="#0f766e">
+  <title>MediPredict | AI Disease Prediction System</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f766e'/><path d='M27 13h10v14h14v10H37v14H27V37H13V27h14z' fill='white'/></svg>">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body id="top" data-min-symptoms="{{ min_symptoms }}" data-max-symptoms="{{ max_symptoms }}">
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.2-6 4.1 12 2.3-6H21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24"><path d="M12 3.5 21 20H3L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="17" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 4.6-3.4 7.8-8 9-4.6-1.2-8-4.4-8-9V6l8-3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.7 12 2.2 2.2 4.4-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="8" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="icon-stethoscope" viewBox="0 0 24 24"><path d="M5 3v5a4 4 0 0 0 8 0V3M7 3H3m12 0h-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 12v2a6 6 0 0 0 12 0v-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="21" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-brain" viewBox="0 0 24 24"><path d="M9.5 4.5A3 3 0 0 0 6 7.4 3.4 3.4 0 0 0 4 10.6c0 1 .4 1.8 1 2.4A3.3 3.3 0 0 0 8 18.3a3 3 0 0 0 4 .7V4.9a2 2 0 0 0-2.5-.4ZM14.5 4.5A3 3 0 0 1 18 7.4a3.4 3.4 0 0 1 2 3.2c0 1-.4 1.8-1 2.4a3.3 3.3 0 0 1-3 5.3 3 3 0 0 1-4 .7V4.9a2 2 0 0 1 2.5-.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.7M20 5v6h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3h3l1.5 4.5-2.2 1.6a13 13 0 0 0 5.6 5.6l1.6-2.2L21 14v3a2.5 2.5 0 0 1-2.7 2.5C10.7 18.8 5.2 13.3 4.5 5.7A2.5 2.5 0 0 1 7 3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 3.5 13.8 9l5.7 1.8-5.7 1.8L12 18l-1.8-5.4-5.7-1.8L10.2 9 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M19 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2Z" fill="currentColor"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <div class="page-glow page-glow--one" aria-hidden="true"></div>
+  <div class="page-glow page-glow--two" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="MediPredict home">
+        <span class="brand-mark"><svg class="icon"><use href="#icon-pulse"></use></svg></span>
+        <span class="brand-text">Medi<span>Predict</span><small>AI symptom checker</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#checker">Symptom checker</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#model">The model</a>
+        <a href="#faq">FAQs</a>
+      </nav>
+      <a class="btn btn-small btn-primary header-cta" href="#checker">Check symptoms</a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#checker">Symptom checker</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#model">The model</a>
+      <a href="#faq">FAQs</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><svg class="icon"><use href="#icon-spark"></use></svg> AI-assisted health screening</span>
+          <h1 id="hero-title">Understand your symptoms.<br><span>Know what may be wrong.</span></h1>
+          <p class="hero-lead">Select the symptoms you are experiencing and our machine-learning model will rank the most likely conditions, along with clear next steps and precautions.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-large" href="#checker">Start symptom check <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+            <a class="btn btn-ghost btn-large" href="#how-it-works">How it works</a>
+          </div>
+          <div class="trust-row" aria-label="System facts">
+            <div><strong>{{ metrics.disease_count }}</strong><span>conditions covered</span></div>
+            <div><strong>{{ metrics.symptom_count }}</strong><span>symptoms analysed</span></div>
+            <div><strong>{{ metrics.accuracy }}%</strong><span>test accuracy</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="monitor-card">
+            <div class="monitor-top">
+              <span class="monitor-dot"></span>
+              <span>Prediction engine</span>
+              <span class="live-pill">Live</span>
+            </div>
+            <div class="heartbeat">
+              <svg viewBox="0 0 340 90" preserveAspectRatio="none">
+                <path class="heartbeat-line" d="M0 55h48l10-26 14 46 12-34 10 14h38l12-22 12 22h44l10-16 12 16h40l12-30 12 30h44" fill="none"/>
+              </svg>
+            </div>
+            <div class="monitor-stats">
+              <div><span>Model</span><strong>{{ metrics.algorithm }}</strong></div>
+              <div><span>Test accuracy</span><strong>{{ metrics.accuracy }}%</strong></div>
+            </div>
+            <div class="monitor-list">
+              <div class="monitor-item">
+                <span class="monitor-rank">01</span>
+                <div><strong>Influenza</strong><small>fever, aches, dry cough</small></div>
+                <span class="monitor-score">82%</span>
+              </div>
+              <div class="monitor-item">
+                <span class="monitor-rank">02</span>
+                <div><strong>COVID-19</strong><small>fever, cough, fatigue</small></div>
+                <span class="monitor-score">11%</span>
+              </div>
+              <div class="monitor-item">
+                <span class="monitor-rank">03</span>
+                <div><strong>Common Cold</strong><small>sneezing, sore throat</small></div>
+                <span class="monitor-score">5%</span>
+              </div>
+            </div>
+            <div class="monitor-footer"><svg class="icon"><use href="#icon-shield"></use></svg> Educational screening, not a diagnosis</div>
+          </div>
+          <div class="floating-chip floating-chip--top"><svg class="icon"><use href="#icon-brain"></use></svg><span><strong>ML powered</strong>Random Forest</span></div>
+          <div class="floating-chip floating-chip--bottom"><span class="pulse-dot"></span><span><strong>{{ metrics.dataset_rows }}</strong>training records</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="hero-note">
+          <svg class="icon"><use href="#icon-info"></use></svg>
+          <p><strong>Important:</strong> MediPredict is an educational project. It does not provide a medical diagnosis and must never replace advice from a qualified doctor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section checker-section" id="checker" aria-labelledby="checker-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow"><svg class="icon"><use href="#icon-stethoscope"></use></svg> Step 1 of 2</span>
+          <h2 id="checker-title">Tell us how you feel</h2>
+          <p>Select every symptom you have experienced recently. Choose at least {{ min_symptoms }} for a meaningful prediction.</p>
+        </div>
+
+        <div class="checker-layout">
+          <div class="panel symptom-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Select your symptoms</h3>
+                <p>Search, or browse by body system.</p>
+              </div>
+              <div class="symptom-count" aria-live="polite"><strong id="count-value">0</strong> selected</div>
+            </div>
+
+            <div class="search-row">
+              <label class="search-box" for="symptom-search">
+                <svg class="icon"><use href="#icon-search"></use></svg>
+                <input id="symptom-search" type="search" placeholder="Search symptoms, e.g. fever or cough" autocomplete="off" aria-label="Search symptoms">
+                <button class="search-clear" type="button" id="search-clear" aria-label="Clear search" hidden><svg class="icon"><use href="#icon-x"></use></svg></button>
+              </label>
+              <button class="btn btn-quiet" type="button" id="example-btn"><svg class="icon"><use href="#icon-spark"></use></svg> Example</button>
+            </div>
+
+            <div class="filter-row" id="filter-row" role="group" aria-label="Filter symptoms by category">
+              <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+              {% for group in catalog %}
+              <button class="filter-chip" type="button" data-filter="{{ group.name }}" aria-pressed="false">{{ group.name }}</button>
+              {% endfor %}
+            </div>
+
+            <div class="symptom-groups" id="symptom-groups">
+              {% for group in catalog %}
+              <div class="symptom-group" data-group="{{ group.name }}">
+                <div class="group-title">
+                  <h4>{{ group.name }}</h4>
+                  <span>{{ group.symptoms|length }} symptoms</span>
+                </div>
+                <div class="symptom-grid">
+                  {% for symptom in group.symptoms %}
+                  <label class="symptom-chip">
+                    <input type="checkbox" value="{{ symptom.key }}" data-label="{{ symptom.label }}">
+                    <span class="chip-box"><svg class="icon"><use href="#icon-check"></use></svg></span>
+                    <span class="chip-text">{{ symptom.label }}</span>
+                  </label>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="empty-search" id="empty-search" hidden>
+              <svg class="icon"><use href="#icon-search"></use></svg>
+              <p>No symptoms match your search.</p>
+              <button class="btn btn-quiet" type="button" id="reset-search">Clear search</button>
+            </div>
+
+            <div class="panel-foot">
+              <p class="panel-hint"><svg class="icon"><use href="#icon-info"></use></svg> Pick symptoms you currently have or had in the last few days.</p>
+              <button class="btn btn-quiet" type="button" id="clear-btn"><svg class="icon"><use href="#icon-refresh"></use></svg> Clear all</button>
+            </div>
+          </div>
+
+          <aside class="summary-wrap" aria-labelledby="summary-title">
+            <div class="panel summary-panel">
+              <div class="summary-head">
+                <span class="summary-icon"><svg class="icon"><use href="#icon-pulse"></use></svg></span>
+                <div>
+                  <h3 id="summary-title">Your symptom list</h3>
+                  <p id="summary-subtitle">Nothing selected yet</p>
+                </div>
+              </div>
+
+              <div class="selected-list" id="selected-list">
+                <div class="selected-empty" id="selected-empty">
+                  <span class="empty-orbit"><svg class="icon"><use href="#icon-plus"></use></svg></span>
+                  <p>Your selected symptoms will appear here. Add at least {{ min_symptoms }} to run the check.</p>
+                </div>
+              </div>
+
+              <div class="progress-block">
+                <div class="progress-label"><span>Minimum required</span><span id="progress-text">0 / {{ min_symptoms }}</span></div>
+                <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="{{ min_symptoms }}" aria-valuenow="0" id="progress-bar"><span id="progress-fill"></span></div>
+              </div>
+
+              <div class="summary-error" id="summary-error" role="alert" hidden></div>
+
+              <button class="btn btn-primary btn-block btn-large" type="button" id="predict-btn" disabled>
+                <span id="predict-label">Predict condition</span>
+                <svg class="icon" id="predict-icon"><use href="#icon-arrow"></use></svg>
+                <span class="spinner" id="predict-spinner" hidden></span>
+              </button>
+              <p class="summary-note"><svg class="icon"><use href="#icon-lock"></use></svg> No account needed. Your selections are not stored.</p>
+            </div>
+
+            <div class="emergency-card">
+              <div class="emergency-head"><svg class="icon"><use href="#icon-alert"></use></svg><strong>When to get help now</strong></div>
+              <p>For severe chest pain, trouble breathing, fainting or sudden confusion, contact emergency services immediately. Do not wait for a prediction.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results" aria-labelledby="results-title" hidden>
+      <div class="container">
+        <div class="results-head">
+          <div>
+            <span class="eyebrow"><svg class="icon"><use href="#icon-spark"></use></svg> Step 2 of 2</span>
+            <h2 id="results-title">Prediction results</h2>
+            <p id="results-subtitle">Ranked by the model from your selected symptoms.</p>
+          </div>
+          <button class="btn btn-ghost" type="button" id="start-over"><svg class="icon"><use href="#icon-refresh"></use></svg> Start over</button>
+        </div>
+
+        <div class="alert alert-emergency" id="emergency-alert" role="alert" hidden>
+          <svg class="icon"><use href="#icon-phone"></use></svg>
+          <div>
+            <strong>Urgent symptoms selected</strong>
+            <p id="emergency-text"></p>
+          </div>
+        </div>
+
+        <div class="alert alert-warning" id="low-confidence-alert" role="status" hidden>
+          <svg class="icon"><use href="#icon-alert"></use></svg>
+          <div>
+            <strong>The model is less certain about this result</strong>
+            <p>Try adding a few more symptoms, or speak with a doctor for a proper assessment.</p>
+          </div>
+        </div>
+
+        <article class="top-result panel" id="top-result">
+          <div class="top-result-body">
+            <div class="result-kicker">
+              <span class="rank-badge">Most likely</span>
+              <span class="specialist-chip"><svg class="icon"><use href="#icon-stethoscope"></use></svg><span id="top-specialist"></span></span>
+            </div>
+            <h3 id="top-name"></h3>
+            <p class="result-desc" id="top-desc"></p>
+
+            <div class="coverage-row">
+              <div class="coverage-label"><span>Symptom match</span><strong id="top-coverage"></strong></div>
+              <div class="coverage-track"><span id="top-coverage-fill"></span></div>
+              <p id="top-matched-count" class="coverage-note"></p>
+            </div>
+
+            <div class="result-block">
+              <h4><svg class="icon"><use href="#icon-check"></use></svg> Symptoms that matched</h4>
+              <div class="tag-row" id="top-matched"></div>
+            </div>
+
+            <div class="result-block">
+              <h4><svg class="icon"><use href="#icon-shield"></use></svg> Suggested precautions</h4>
+              <ul class="precaution-list" id="top-precautions"></ul>
+            </div>
+          </div>
+          <div class="confidence-wrap">
+            <div class="confidence-ring" id="top-ring" style="--value: 0">
+              <div class="ring-inner">
+                <strong id="top-confidence">0%</strong>
+                <span>model confidence</span>
+              </div>
+            </div>
+            <p>Probability estimated by the trained classifier from the symptoms you selected.</p>
+          </div>
+        </article>
+
+        <div class="other-heading">
+          <h3>Other possibilities</h3>
+          <p>These conditions also appeared in the model's top predictions.</p>
+        </div>
+        <div class="other-grid" id="other-results"></div>
+
+        <div class="result-disclaimer">
+          <svg class="icon"><use href="#icon-info"></use></svg>
+          <p><strong>This is not a diagnosis.</strong> Predictions are based only on the symptoms you selected and the patterns learned from an educational dataset. Many conditions share symptoms. Please consult a qualified doctor before making any health decision.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how-section" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-heading centered">
+          <span class="eyebrow"><svg class="icon"><use href="#icon-spark"></use></svg> Simple by design</span>
+          <h2 id="how-title">From symptoms to next steps</h2>
+          <p>Three quick steps, powered by a model trained on thousands of symptom profiles.</p>
+        </div>
+        <div class="step-grid">
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <span class="step-icon"><svg class="icon"><use href="#icon-search"></use></svg></span>
+            <h3>Select your symptoms</h3>
+            <p>Search or browse {{ metrics.symptom_count }} symptoms organised by body system. Choose everything that applies to how you feel.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <span class="step-icon"><svg class="icon"><use href="#icon-brain"></use></svg></span>
+            <h3>The model analyses</h3>
+            <p>A {{ metrics.algorithm }} classifier compares your symptom pattern with {{ metrics.dataset_rows }} labelled training records.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <span class="step-icon"><svg class="icon"><use href="#icon-shield"></use></svg></span>
+            <h3>Review the guidance</h3>
+            <p>See the top 3 likely conditions with confidence scores, matched symptoms, precautions and the right specialist.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section model-section" id="model" aria-labelledby="model-title">
+      <div class="container">
+        <div class="model-panel">
+          <div class="model-copy">
+            <span class="eyebrow eyebrow--light"><svg class="icon"><use href="#icon-brain"></use></svg> Under the hood</span>
+            <h2 id="model-title">A model you can explain</h2>
+            <p>The system uses supervised machine learning. Each symptom becomes a binary feature, and the classifier learns which combinations are associated with each condition.</p>
+            <div class="model-stats">
+              <div><strong>{{ metrics.accuracy }}%</strong><span>Holdout accuracy</span></div>
+              <div><strong>{{ metrics.cv_accuracy }}%</strong><span>5-fold CV accuracy</span></div>
+              <div><strong>{{ metrics.dataset_rows }}</strong><span>Training records</span></div>
+            </div>
+            <div class="compare-table">
+              <div class="compare-row compare-head"><span>Algorithm</span><span>Accuracy</span><span>F1 score</span></div>
+              {% for name, scores in metrics.comparison.items() %}
+              <div class="compare-row{% if name == metrics.algorithm %} is-selected{% endif %}">
+                <span>{{ name }}{% if name == metrics.algorithm %}<em>deployed</em>{% endif %}</span>
+                <span>{{ (scores.accuracy * 100)|round(1) }}%</span>
+                <span>{{ (scores.weighted_f1 * 100)|round(1) }}%</span>
+              </div>
+              {% endfor %}
+            </div>
+            <p class="model-footnote">Random Forest was selected for deployment because it offers smooth probability estimates and feature importance, while performing within 0.5% of the best score.</p>
+          </div>
+          <div class="feature-panel">
+            <div class="feature-panel-head">
+              <span><svg class="icon"><use href="#icon-pulse"></use></svg> Most influential symptoms</span>
+              <small>Global feature importance</small>
+            </div>
+            <div class="feature-list">
+              {% for feature in metrics.top_features %}
+              <div class="feature-row">
+                <div><span>{{ feature.label }}</span><strong>{{ (feature.importance * 100)|round(1) }}%</strong></div>
+                <div class="feature-track"><span style="width: {{ (feature.importance / metrics.top_features[0].importance * 100)|round(1) }}%"></span></div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="dataset-note">
+              <svg class="icon"><use href="#icon-info"></use></svg>
+              <p>Training data is synthesised from a curated disease-symptom knowledge base for educational use, not collected from real patients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div class="faq-intro">
+          <span class="eyebrow"><svg class="icon"><use href="#icon-info"></use></svg> Good to know</span>
+          <h2 id="faq-title">Frequently asked questions</h2>
+          <p>Everything you should know before using the symptom checker.</p>
+          <div class="faq-card">
+            <svg class="icon"><use href="#icon-shield"></use></svg>
+            <div>
+              <strong>Privacy first</strong>
+              <p>No sign-up, no database and no cookies for tracking. Predictions happen in memory and are never saved.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>How accurate is the prediction? <svg class="icon"><use href="#icon-chevron"></use></svg></summary>
+            <p>The deployed model scores {{ metrics.accuracy }}% on held-out test data and {{ metrics.cv_accuracy }}% in 5-fold cross-validation. However, this is an educational dataset, so real-world accuracy will be lower. Treat the result as a learning aid, not medical advice.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How many symptoms should I select? <svg class="icon"><use href="#icon-chevron"></use></svg></summary>
+            <p>Choose at least {{ min_symptoms }} and up to {{ max_symptoms }} symptoms. More relevant symptoms usually produce a clearer prediction. Only select symptoms you have actually experienced.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why are three conditions shown? <svg class="icon"><use href="#icon-chevron"></use></svg></summary>
+            <p>The classifier calculates a probability for every condition it knows. The website displays the three highest probabilities so you can see when several conditions are close. A lower confidence score means the symptoms are less distinctive.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is my health data stored? <svg class="icon"><use href="#icon-chevron"></use></svg></summary>
+            <p>No. Your symptom selections are sent to the local server only for the prediction request. The app does not use a database, user accounts or analytics, and nothing is written to disk.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can this replace a doctor? <svg class="icon"><use href="#icon-chevron"></use></svg></summary>
+            <p>No, never. The tool cannot examine you, order tests or understand your medical history. If your symptoms are severe, persistent or worrying, consult a qualified healthcare professional.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <span class="eyebrow eyebrow--light"><svg class="icon"><use href="#icon-pulse"></use></svg> Ready when you are</span>
+            <h2>Not feeling your best?</h2>
+            <p>Run a quick symptom check and review the most likely conditions in seconds.</p>
+          </div>
+          <a class="btn btn-light btn-large" href="#checker">Check your symptoms <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="MediPredict home">
+          <span class="brand-mark"><svg class="icon"><use href="#icon-pulse"></use></svg></span>
+          <span class="brand-text">Medi<span>Predict</span><small>AI symptom checker</small></span>
+        </a>
+        <p>An educational disease prediction system built with Flask, scikit-learn and a Random Forest classifier.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="#checker">Symptom checker</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#model">Model &amp; metrics</a>
+        <a href="#faq">FAQs</a>
+      </div>
+      <div class="footer-links">
+        <h4>Project</h4>
+        <a href="/api/model-info">Model info API</a>
+        <a href="/api/symptoms">Symptoms API</a>
+        <a href="#results">Prediction results</a>
+      </div>
+      <div class="footer-disclaimer">
+        <h4>Medical disclaimer</h4>
+        <p>MediPredict does not provide medical advice, diagnosis or treatment. Always seek the guidance of a qualified health professional with any questions about a medical condition.</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 MediPredict. Educational project.</span>
+      <span>Built with Python, Flask, scikit-learn &amp; vanilla JavaScript.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>

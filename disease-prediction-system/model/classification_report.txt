@@ -1,0 +1,33 @@
+Model: Random Forest
+
+                         precision    recall  f1-score   support
+
+      Allergic Rhinitis     1.0000    1.0000    1.0000        18
+                 Anemia     1.0000    1.0000    1.0000        18
+       Bronchial Asthma     1.0000    1.0000    1.0000        18
+               COVID-19     1.0000    1.0000    1.0000        18
+             Chickenpox     0.9474    1.0000    0.9730        18
+            Common Cold     1.0000    1.0000    1.0000        18
+                 Dengue     1.0000    1.0000    1.0000        18
+      Diabetes Mellitus     1.0000    1.0000    1.0000        18
+        Gastroenteritis     1.0000    1.0000    1.0000        18
+            Hepatitis B     1.0000    1.0000    1.0000        18
+           Hypertension     1.0000    0.9444    0.9714        18
+         Hypothyroidism     1.0000    1.0000    1.0000        18
+              Influenza     1.0000    0.9444    0.9714        18
+          Kidney Stones     1.0000    1.0000    1.0000        18
+                Malaria     0.9000    1.0000    0.9474        18
+             Meningitis     1.0000    0.9444    0.9714        18
+               Migraine     0.9474    1.0000    0.9730        18
+         Osteoarthritis     1.0000    1.0000    1.0000        18
+           Peptic Ulcer     1.0000    1.0000    1.0000        18
+              Pneumonia     0.9474    1.0000    0.9730        18
+              Sinusitis     1.0000    1.0000    1.0000        18
+            Tonsillitis     1.0000    1.0000    1.0000        18
+           Tuberculosis     1.0000    0.9444    0.9714        18
+                Typhoid     1.0000    0.9444    0.9714        18
+Urinary Tract Infection     1.0000    1.0000    1.0000        18
+
+               accuracy                         0.9889       450
+              macro avg     0.9897    0.9889    0.9889       450
+           weighted avg     0.9897    0.9889    0.9889       450
